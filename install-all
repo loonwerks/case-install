@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+install-pkgs
+install-hol
+install-cakeml
+install-splat
+install-camkes
+install-osate
+install-fmw
+install-sireum
+export-commands

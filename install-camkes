@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+    mkdir -p repos
+
+    pip install --user setuptools
+    pip install --user sel4-deps
+    pip install --user camkes-deps
+    mkdir repos/camkes
+    (cd repos/camkes && yes | repo init -u https://github.com/seL4/camkes-manifest.git && repo sync)

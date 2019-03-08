@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+    add-apt-repository -y ppa:webupd8team/java
+    apt-get update
+    apt-get -y upgrade
+    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+    apt-get install -y oracle-java8-installer oracle-java8-set-default
+    pkgs=(
+      repo
+      curl
+      git
+      wget
+      polyml
+      libpolyml-dev
+      build-essential
+      ninja-build
+      python-six
+      python-pip
+      python-enum34
+      python-pyelftools
+      python-jinja2
+      python-dev
+      python3-dev
+      python3-pip
+      libxml2-utils
+      ncurses-dev
+      emacs-nox
+      cmake
+      ccache
+      doxygen
+      gcc-arm-linux-gnueabi
+      g++-arm-linux-gnueabi
+      gcc-arm-linux-gnueabihf
+      g++-arm-linux-gnueabihf
+      gcc-aarch64-linux-gnu
+      g++-aarch64-linux-gnu
+      qemu-system-arm
+      qemu-system-x86
+      clang
+      gdb
+      libssl-dev
+      libclang-dev
+      libcunit1-dev
+      libsqlite3-dev
+      libwww-perl
+      libxml2-dev
+      libxslt-dev
+      qemu-kvm
+      texlive-fonts-recommended
+      texlive-latex-extra
+      texlive-metapost
+      texlive-bibtex-extra
+      gtk3.0
+      libswt-gtk-3-java
+      unzip
+      )
+    for i in "${pkgs[@]}"
+    do
+      apt-get install $i -y
+    done
+    update-locale LANG=en_US.UTF-8
+    curl -sSL https://get.haskellstack.org/ | sh
+    update-locale LANG=en_US.UTF-8
+
+
+
