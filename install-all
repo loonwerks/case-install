@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-install-pkgs
-install-hol
-install-cakeml
-install-splat
-install-camkes
-install-osate
-install-fmw
-install-sireum
-export-commands
+#installation for ubuntu 18.04
+
+DIR=$(dirname $0)
+
+$DIR/install-pkgs
+$DIR/install-hol
+$DIR/install-cakeml
+$DIR/install-camkes
+$DIR/install-fmw
+$DIR/install-sireum
+$DIR/install-osate
+$DIR/export-commands

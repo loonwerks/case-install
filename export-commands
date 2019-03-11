@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-    echo '' >> ~/.bashrc
-    echo 'export PATH=${PATH}:${PWD}/dev/cake-x64-64/:${PWD}/repos/HOL/bin:' >> ~/.bashrc
+echo sed -i 's/^.*PATH=.*$//g' ~/.bashrc
+echo 'export PATH=${PATH}:${PWD}/dev/cake-x64-64/:${PWD}/repos/HOL/bin:' >> ~/.bashrc

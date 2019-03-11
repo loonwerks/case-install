@@ -1,6 +1,4 @@
-
 #!/usr/bin/env bash
 
-mkdir -p repos
 
-git clone https://github.com/sireum/osate-plugin-update-site.git repos/sireum
+git clone https://github.com/sireum/osate-plugin-update-site.git sireum 

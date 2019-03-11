@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
-mkdir -p repos
+git clone git@github.com:loonwerks/formal-methods-workbench.git
 
-git clone git@github.com:loonwerks/formal-methods-workbench.git repos/fmw
-(cd repos/fmw && cp CASE-splat/TA2/splat/splat \
-  com.collins.fmw.cyres/splat.plugin/static)
 
-(cd repos/fmw && mvn clean install)
+(cd formal-methods-workbench/tools/splat \
+    && Holmake \
+    && cp splat/splat formal-methods-workbench/tools/case/splat.plugin/resources)
 
-mv repos/fmw/com.collins.fmw.ide/target/products/com.collins.fmw.ide-0.0.0--linux.gtk.x86_64.tar.gz .
+(cd formal-methods-workbench/tools \
+    && mvn clean install)
 
-tar xzvf com.collins.fmw.ide-0.0.0--linux.gtk.x86_64.tar.gz
 
-cp sireum/org.sireum.aadl.osate.update.site/features/org.sireum.aadl.osate.feature_1.0.0.201812291838.jar \
-  com.collins.fmw.ide-0.0.0--linux.gtk.x86_64/features
   

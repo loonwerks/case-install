@@ -1,3 +1,34 @@
 #!/usr/bin/env bash
 
-# Osate - TODO 
+# Osate
+
+OSATE_DIR=osate2-2.4.0-vfinal-linux.gtk.x86_64
+OSATE_TAR=$OSATE_DIR.tar.gz
+OSATE_URL=https://osate-build.sei.cmu.edu/download/osate/stable/latest/products/$OSATE_TAR 
+
+wget --quiet $OSATE_URL
+(mkdir -p osate && cd osate && mv ../$OSATE_TAR . && tar -xvzf $OSATE_TAR)
+
+(cp sireum/org.sireum.aadl.osate.update.site/features/* \
+  osate/features)
+
+(cp sireum/org.sireum.aadl.osate.update.site/plugins/* \
+  osate/plugins)
+
+(cp formal-methods-workbench/tools/case/repository/target/repository/features/* \
+  osate/features)
+
+(cp formal-methods-workbench/tools/case/repository/target/repository/plugins/* \
+  osate/plugins)
+
+(cp formal-methods-workbench/tools/agree/repository/target/repository/features/* \
+  osate/features)
+
+(cp formal-methods-workbench/tools/agree/repository/target/repository/plugins/* \
+  osate/plugins)
+
+(cp formal-methods-workbench/tools/resolute/repository/target/repository/features/* \
+  osate/features)
+
+(cp formal-methods-workbench/tools/resolute/repository/target/repository/plugins/* \
+  osate/plugins)

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-mkdir -p repos
-
-git clone https://github.com/loonwerks/CASE repos/CASE-splat
-
-(cd repos/CASE-splat/TA2/splat && Holmake)

@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-mkdir -p repos
 mkdir -p tarballs 
 
-git clone https://github.com/CakeML/cakeml.git repos/CakeML
-(cd repos/CakeML && git checkout 59886cd0205c1d5d943ef10a26890f79b515b68f)
+git clone https://github.com/CakeML/cakeml.git
+(cd cakeml && git checkout 59886cd0205c1d5d943ef10a26890f79b515b68f)
 (cd tarballs && wget --quiet https://cakeml.org/cake-x64-64.tar.gz)
 (cd tarballs && wget --quiet https://cakeml.org/cake-x64-32.tar.gz)
 (cd software && tar -xvzf ../tarballs/cake-x64-64.tar.gz && cd cake-x64-64 && make)
