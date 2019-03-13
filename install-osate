@@ -4,31 +4,24 @@
 
 OSATE_DIR=osate2-2.4.0-vfinal-linux.gtk.x86_64
 OSATE_TAR=$OSATE_DIR.tar.gz
-OSATE_URL=https://osate-build.sei.cmu.edu/download/osate/stable/latest/products/$OSATE_TAR 
+OSATE_URL=https://osate-build.sei.cmu.edu/download/osate/stable/2.4.0/products/$OSATE_TAR
 
 wget --quiet $OSATE_URL
 (mkdir -p osate && cd osate && mv ../$OSATE_TAR . && tar -xvzf $OSATE_TAR)
 
-(cp sireum/org.sireum.aadl.osate.update.site/features/* \
-  osate/features)
-
-(cp sireum/org.sireum.aadl.osate.update.site/plugins/* \
-  osate/plugins)
-
-(cp formal-methods-workbench/tools/case/repository/target/repository/features/* \
-  osate/features)
-
-(cp formal-methods-workbench/tools/case/repository/target/repository/plugins/* \
-  osate/plugins)
-
-(cp formal-methods-workbench/tools/agree/repository/target/repository/features/* \
-  osate/features)
-
-(cp formal-methods-workbench/tools/agree/repository/target/repository/plugins/* \
-  osate/plugins)
-
-(cp formal-methods-workbench/tools/resolute/repository/target/repository/features/* \
-  osate/features)
-
-(cp formal-methods-workbench/tools/resolute/repository/target/repository/plugins/* \
-  osate/plugins)
+./osate/osate \
+-clean -purgeHistory \
+-application org.eclipse.equinox.p2.director \
+-noSplash \
+-repository \
+https://raw.githubusercontent.com/sireum/osate-plugin-update-site/master,\
+https://raw.githubusercontent.com/sireum/act-plugin-update-site/master,\
+formal-methods-workbench/tools/case/repository/target/repository,\
+formal-methods-workbench/tools/agree/repository/target/repository,\
+formal-methods-workbench/tools/resolute/repository/target/repository,\
+-installIUs \
+org.sireum.aadl.osate.feature.feature.group,\
+com.rockwellcollins.atc.agree.feature.feature.group,\
+com.rockwellcollins.atc.resolute.feature.feature.group,\
+com.collins.fmw.cyres.feature.feature.group,\
+-vmargs -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true
