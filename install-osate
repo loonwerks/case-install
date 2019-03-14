@@ -22,8 +22,6 @@ wget --quiet $OSATE_URL
 -installIUs org.sireum.aadl.osate.act.feature.feature.group \
 -vmargs -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true
 
-echo "ooga booga -- file:$(pwd)/formal-methods-workbench/tools/case/repository/target/repository"
-
 ./osate/osate -noSplash \
 -application org.eclipse.equinox.p2.director \
 -repository file:$(pwd)/formal-methods-workbench/tools/agree/repository/target/repository \
