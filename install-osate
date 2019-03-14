@@ -9,19 +9,36 @@ OSATE_URL=https://osate-build.sei.cmu.edu/download/osate/stable/2.4.0/products/$
 wget --quiet $OSATE_URL
 (mkdir -p osate && cd osate && mv ../$OSATE_TAR . && tar -xvzf $OSATE_TAR)
 
-./osate/osate \
--clean -purgeHistory \
+
+./osate/osate -noSplash \
 -application org.eclipse.equinox.p2.director \
--noSplash \
--repository \
-https://raw.githubusercontent.com/sireum/osate-plugin-update-site/master,\
-https://raw.githubusercontent.com/sireum/act-plugin-update-site/master,\
-formal-methods-workbench/tools/case/repository/target/repository,\
-formal-methods-workbench/tools/agree/repository/target/repository,\
-formal-methods-workbench/tools/resolute/repository/target/repository,\
--installIUs \
-org.sireum.aadl.osate.feature.feature.group,\
-com.rockwellcollins.atc.agree.feature.feature.group,\
-com.rockwellcollins.atc.resolute.feature.feature.group,\
-com.collins.fmw.cyres.feature.feature.group,\
+-repository https://raw.githubusercontent.com/sireum/osate-plugin-update-site/master \
+-installIUs org.sireum.aadl.osate.feature.feature.group \
 -vmargs -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true
+
+./osate/osate -noSplash \
+-application org.eclipse.equinox.p2.director \
+-repository https://raw.githubusercontent.com/sireum/act-plugin-update-site/master \
+-installIUs org.sireum.aadl.osate.act.feature.feature.group \
+-vmargs -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true
+
+echo "ooga booga -- file:$(pwd)/formal-methods-workbench/tools/case/repository/target/repository"
+
+./osate/osate -noSplash \
+-application org.eclipse.equinox.p2.director \
+-repository file:$(pwd)/formal-methods-workbench/tools/agree/repository/target/repository \
+-installIUs com.rockwellcollins.atc.agree.feature.feature.group \
+-vmargs -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true
+
+./osate/osate -noSplash \
+-application org.eclipse.equinox.p2.director \
+-repository file:$(pwd)/formal-methods-workbench/tools/resolute/repository/target/repository \
+-installIUs com.rockwellcollins.atc.resolute.feature.feature.group \
+-vmargs -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true
+
+./osate/osate -noSplash \
+-application org.eclipse.equinox.p2.director \
+-repository file:$(pwd)/formal-methods-workbench/tools/case/repository/target/repository \
+-installIUs com.collins.fmw.cyres.feature.feature.group \
+-vmargs -Declipse.p2.mirrors=true -Djava.net.preferIPv4Stack=true
+
